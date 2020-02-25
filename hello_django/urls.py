@@ -18,7 +18,8 @@ from django.urls import path
 
 from .views import ping, loanapp
 
-pingPath = path("admin/", admin.site.urls), path("ping/", ping, name="ping")
+adminPath = path("admin/", admin.site.urls)
+pingPath = path("ping/", ping, name="ping")
 loanPath = path("loanapp/", loanapp, name="loanapp")
 
-urlpatterns = [pingPath, loanPath]
+urlpatterns = [adminPath, pingPath, loanPath]
