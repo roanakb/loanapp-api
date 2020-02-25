@@ -19,4 +19,4 @@ from django.urls import path
 from .views import ping, loanapp
 
 urlpatterns = [path("admin/", admin.site.urls), path("ping/", ping, name="ping"),
- path("loanapp/", loanapp, name="loanapp")]
+               path("loanapp/", loanapp, name="loanapp")]
