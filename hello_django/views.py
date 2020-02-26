@@ -18,5 +18,5 @@ def loanapp(request):
     all_owner_data = data["Owners"]
     for entry in all_owner_data:
         owner_name = entry["Name"]
-        Owner.objects.create(name=owner_name, data=entry)
+        Owner.objects.create(name=owner_name, data=entry, business=business_name)
     return JsonResponse(data)
