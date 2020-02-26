@@ -7,5 +7,5 @@ def ping(request):
 
 
 def loanapp(request):
-    print(request.body)
-    return
+    data = request.body
+    return JsonResponse(data)
