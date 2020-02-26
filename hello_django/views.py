@@ -1,9 +1,9 @@
 import json
 
 from django.http import JsonResponse
-import json
 
 from loanapp.models import Business, Owner
+
 
 def ping(request):
     data = {"ping": "pong!"}
