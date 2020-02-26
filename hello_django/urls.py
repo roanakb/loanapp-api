@@ -19,12 +19,7 @@ from django.urls import path
 from .views import loanapp, ping
 
 urlpatterns = [
-<<<<<<< HEAD
     path("admin/", admin.site.urls),
     path("ping/", ping, name="ping"),
-=======
-    path('admin/', admin.site.urls),
-    path('ping/', ping, name="ping"),
->>>>>>> dd1dd0a731b12dd8bfb6ae911a33085a3e8578e7
     path("loanapp/", loanapp, name="loanapp"),
 ]
