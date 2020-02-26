@@ -3,8 +3,7 @@ import json
 from django.http import JsonResponse
 import json
 
-from .models import Business, Owner
-
+from loanapp.models import Business, Owner
 
 def ping(request):
     data = {"ping": "pong!"}

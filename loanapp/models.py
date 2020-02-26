@@ -8,4 +8,4 @@ class Business(models.Model):
 class Owner(models.Model):
     name = models.CharField(max_length=100)
     data = JSONField()
-    business = models.ForeignKey(Business)
+    business = models.ForeignKey(Business, on_delete=models.CASCADE)
