@@ -1,3 +1,5 @@
+import json
+
 from django.http import JsonResponse
 
 
@@ -7,5 +9,5 @@ def ping(request):
 
 
 def loanapp(request):
-    data = request.body
+    data = json.loads(request.body.decode("utf-8"))
     return JsonResponse(data)
