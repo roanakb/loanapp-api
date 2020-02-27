@@ -1,4 +1,5 @@
 import json
+import random
 
 from django.http import JsonResponse
 
@@ -10,9 +11,31 @@ def ping(request):
     return JsonResponse(data)
 
 
+def status(request):
+    data = json.loads(request.body.decode("utf-8"))
+    business = Business.objects.filter(data__CFRequestId=data["CFRequestId"])
+    out = ""
+    if len(business) > 0:
+        val = random.uniform(0, 1)
+        if val > 0.66:
+            out = "2 Weeks until completion"
+        elif val > 0.33:
+            out = "Will be done tomorrow"
+        else:
+            out = "Application will be processed by April 11, 2063"
+    else:
+        out = "Invalid CFRequestId"
+    output = {"Status": out}
+    return JsonResponse(output)
+
+
 def loanapp(request):
     data = json.loads(request.body.decode("utf-8"))
-    business_data = data["Business"]
+    business_data = {
+        **data["Business"],
+        **data["RequestHeader"],
+        **data["CFApplicationData"],
+    }
     business_name = business_data["Name"]
     business_repeats = Business.objects.filter(name=business_name)
     if len(business_repeats) > 0:
@@ -54,5 +77,7 @@ def loanapp(request):
             existing_owner.data = existing_owner_data
             existing_owner.save()
         else:
-            Owner.objects.create(name=owner_name, data=entry, business=business_name)
+            Owner.objects.create(
+                name=owner_name, data=owner_dict, business=business_name
+            )
     return JsonResponse(data)
