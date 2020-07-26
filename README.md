@@ -9,6 +9,3 @@ If duplicate Businesses or Owners are provided, non-null values will be updated 
 
 /status/ - Takes in JSON input of CFRequestId and returns random status is ID is valid. Sample input:
 {"CFRequestId": "500653901"}
-
-Live Link:
-https://morning-dusk-91267.herokuapp.com/
